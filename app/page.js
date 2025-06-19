@@ -13,11 +13,13 @@ import FooterSection from './components/FooterSection';
 import AboutSection from "./components/AboutSection";
 import WhyChooseUsSection from "./components/WhyChooseUsSection";
 import TestimonialsSection from "./components/TestimonialsSection";
+import StudentLoginSection from './components/StudentLoginSection'
 import { FaWhatsapp } from 'react-icons/fa'
 export default function Home() {
   return (
     <main className="bg-white text-gray-800">
       <HeroSection />
+      <StudentLoginSection />
       <AboutSection />
       <WhyChooseUsSection />
       <TestimonialsSection />
