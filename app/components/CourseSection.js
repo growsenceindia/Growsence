@@ -1,80 +1,82 @@
-'use client';
+// app/components/CourseSection.js
+"use client";
 
-import { motion } from 'framer-motion';
-import { FaStar, FaBolt } from 'react-icons/fa';
-
-const courses = [
-  {
-    title: 'Spoken English',
-    type: 'Basic',
-    description: 'Speak confidently with our expert-led modules.',
-  },
-  {
-    title: 'Affiliate Marketing',
-    type: 'Basic',
-    description: 'Learn to earn with digital affiliate systems.',
-  },
-  {
-    title: 'Lead Generation',
-    type: 'Basic',
-    description: 'Master leads using modern marketing tools.',
-  },
-  {
-    title: 'Video Editing',
-    type: 'Basic',
-    description: 'Create stunning videos with ease.',
-  },
-  {
-    title: 'Share Market Expert',
-    type: 'Pro',
-    description: 'Decode the market & start investing smartly.',
-  },
-  {
-    title: 'Instagram Mastery',
-    type: 'Pro',
-    description: 'Grow & monetize your Instagram page.',
-  },
-];
-
-const CourseCard = ({ course }) => {
-  return (
-    <motion.div
-      whileHover={{ scale: 1.05, y: -5 }}
-      className="rounded-2xl shadow-xl bg-white/10 backdrop-blur-sm p-6 border border-white/20 transition-all duration-300 hover:shadow-2xl"
-    >
-      <div className="flex items-center justify-between mb-2">
-        <h3 className="text-xl font-semibold text-white">{course.title}</h3>
-        <span className={`text-sm px-2 py-1 rounded-full ${
-          course.type === 'Pro'
-            ? 'bg-yellow-400 text-black'
-            : 'bg-blue-500 text-white'
-        } flex items-center gap-1`}>
-          {course.type === 'Pro' ? <FaBolt /> : <FaStar />}
-          {course.type}
-        </span>
-      </div>
-      <p className="text-white/80 text-sm">{course.description}</p>
-    </motion.div>
-  );
-};
+import Image from "next/image";
 
 const CourseSection = () => {
-  return (
-    <section className="py-20 px-4 bg-gradient-to-b from-[#0f0c29] via-[#302b63] to-[#24243e]">
-      <div className="max-w-7xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-4xl font-bold text-center text-white mb-12"
-        >
-          🎓 Our Most Loved Courses
-        </motion.h2>
+  const courses = [
+    {
+      name: "Basic Package",
+      price: "₹499",
+      image: "/basic.png",
+      features: [
+        "Spoken English",
+        "Affiliate Marketing",
+        "Lead Generation",
+        "Communication Skills",
+        "Video Editing",
+      ],
+    },
+    {
+      name: "Pro Package",
+      price: "₹1,499",
+      image: "/pro.png",
+      features: [
+        "Share Market Expert",
+        "Graphic Design",
+        "Rich Mindset",
+        "YouTube Mastery",
+        "Instagram, FB & WhatsApp Marketing",
+      ],
+    },
+  ];
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {courses.map((course, index) => (
-            <CourseCard key={index} course={course} />
+  return (
+    <section className="bg-gradient-to-br from-black via-gray-900 to-gray-800 py-16 px-4 text-white">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
+          Our Popular Packages
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {courses.map((pkg, idx) => (
+            <div
+              key={idx}
+              className="bg-gray-900 border-2 border-red-600 rounded-xl p-6 shadow-lg hover:scale-105 transition-transform"
+            >
+              <div className="flex justify-center mb-4">
+                <Image
+                  src={pkg.image}
+                  alt={pkg.name}
+                  width={80}
+                  height={80}
+                  className="rounded-full"
+                />
+              </div>
+              <h3 className="text-2xl font-bold text-center mb-2">
+                {pkg.name}
+              </h3>
+              <p className="text-center text-lg text-red-400 font-semibold mb-4">
+                {pkg.price}
+              </p>
+              <ul className="space-y-2 text-sm md:text-base">
+                {pkg.features.map((feature, i) => (
+                  <li key={i} className="flex items-center gap-2">
+                    ✓ {feature}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6 text-center">
+                <a
+                  href="https://wa.me/919835742586"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded-full"
+                >
+                  Enroll Now
+                </a>
+              </div>
+            </div>
           ))}
         </div>
       </div>

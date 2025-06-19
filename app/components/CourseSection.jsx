@@ -1,60 +1,69 @@
+// ✅ Section 2: CourseSection.jsx
+
 'use client';
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaStar, FaBolt } from 'react-icons/fa';
+import Image from 'next/image';
 
-const courses = [
-  {
-    title: 'Spoken English',
-    level: 'Basic',
-    icon: <FaStar className="text-yellow-400" />,
+const courses = {
+  basic: {
+    title: 'Basic Package',
+    price: '₹999',
+    image: '/basic.png',
+    items: [
+      'Spoken English',
+      'Affiliate Marketing',
+      'Lead Generation',
+      'Communication Skills',
+      'Video Editing',
+    ],
   },
-  {
-    title: 'Affiliate Marketing',
-    level: 'Basic',
-    icon: <FaStar className="text-yellow-400" />,
+  pro: {
+    title: 'Pro Package',
+    price: '₹2999',
+    image: '/pro.png',
+    items: [
+      'Share Market Expert',
+      'Graphic Design',
+      'Rich Mindset',
+      'YouTube, Facebook, Instagram',
+      'WhatsApp Marketing',
+    ],
   },
-  {
-    title: 'Graphic Design',
-    level: 'Pro',
-    icon: <FaBolt className="text-purple-500" />,
-  },
-  {
-    title: 'Share Market Expert',
-    level: 'Pro',
-    icon: <FaBolt className="text-purple-500" />,
-  },
-];
+};
 
-const CourseSection = () => {
+const CourseCard = ({ type, data }) => (
+  <div className="rounded-2xl shadow-lg p-6 bg-white w-full sm:w-[48%] flex flex-col justify-between hover:shadow-xl transition">
+    <Image
+      src={data.image}
+      alt={`${data.title} image`}
+      width={500}
+      height={300}
+      className="rounded-xl mb-4 object-cover h-48 w-full"
+    />
+    <h3 className="text-xl font-semibold mb-2 text-center">{data.title}</h3>
+    <p className="text-lg text-center text-green-600 font-bold mb-3">{data.price}</p>
+    <ul className="space-y-1 mb-4 text-sm">
+      {data.items.map((item, i) => (
+        <li key={i} className="flex items-center gap-2">
+          ✔ {item}
+        </li>
+      ))}
+    </ul>
+    <button className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl px-4 py-2 hover:scale-105 transition">
+      Enroll Now
+    </button>
+  </div>
+);
+
+export default function CourseSection() {
   return (
-    <section className="py-16 px-4 bg-gradient-to-b from-[#f0f4ff] to-white">
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-6">
-          📚 Our Premium Courses
-        </h2>
-        <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
-          Master essential skills to grow your income, brand, and confidence. Designed for real-world success.
-        </p>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {courses.map((course, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="group bg-white/30 backdrop-blur-md border border-white/40 p-6 rounded-2xl shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-            >
-              <div className="text-3xl mb-3">{course.icon}</div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-1">{course.title}</h3>
-              <p className="text-sm text-gray-600">{course.level} Course</p>
-            </motion.div>
-          ))}
+    <section className="bg-gray-100 py-16 px-4" id="courses">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-10">Our Courses</h2>
+        <div className="flex flex-wrap gap-4 justify-center">
+          <CourseCard type="basic" data={courses.basic} />
+          <CourseCard type="pro" data={courses.pro} />
         </div>
       </div>
     </section>
   );
-};
-
-export default CourseSection;
+}
