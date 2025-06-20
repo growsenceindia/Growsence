@@ -1,45 +1,61 @@
-'use client';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
+"use client";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function HeroSection() {
   return (
-    <section className="bg-gradient-to-b from-[#001f3f] to-[#003366] text-white px-6 py-16 md:py-24 text-center relative">
-      <div className="max-w-5xl mx-auto z-10 relative">
+    <section className="relative bg-white py-16 px-6 md:px-12 text-center overflow-hidden">
+      <div className="max-w-6xl mx-auto">
         <motion.h1
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-3xl md:text-5xl font-bold leading-tight"
+          className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-6"
         >
-          🚀 Learn, Earn & Grow with <span className="text-yellow-400">Growsence</span>
+          Build Skills that <span className="text-blue-600">Pay Bills</span> <br />
+          Learn & Earn with <span className="text-indigo-600">Growsence</span>
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="mt-4 text-lg md:text-xl text-gray-200"
+          className="text-lg md:text-xl text-gray-600 mb-10"
         >
-          India's most powerful learning + earning platform for youth & creators
+          India's Fastest Growing Digital Earning & Learning Platform
         </motion.p>
 
-        <motion.a
-          href="#courses"
-          whileHover={{ scale: 1.05 }}
-          className="inline-block mt-8 bg-yellow-400 text-black font-semibold px-8 py-3 rounded-full shadow-lg transition hover:bg-yellow-300"
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+          className="flex flex-col sm:flex-row justify-center items-center gap-5"
         >
-          Enroll Now
-        </motion.a>
-      </div>
+          <button className="bg-gradient-to-r from-indigo-500 to-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-md hover:scale-105 transition-transform duration-300">
+            Enroll Now
+          </button>
+          <button className="bg-white border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-50 transition-all duration-300">
+            Login
+          </button>
+        </motion.div>
 
-      <Image
-        src="/globe.svg"
-        alt="Growsence"
-        width={500}
-        height={500}
-        className="absolute bottom-0 right-0 opacity-20 hidden md:block"
-      />
+        {/* Hero Image */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.7, duration: 0.6 }}
+          className="mt-12"
+        >
+          <Image
+            src="/pexels-photo-4145190.jpg"
+            alt="Hero Banner"
+            width={1000}
+            height={600}
+            className="rounded-3xl shadow-xl mx-auto"
+            priority
+          />
+        </motion.div>
+      </div>
     </section>
   );
 }

@@ -7,7 +7,7 @@ const CourseSection = () => {
   const courses = [
     {
       name: "Basic Package",
-      price: "₹499",
+      price: "₹1499",
       image: "/basic.png",
       features: [
         "Spoken English",
@@ -19,7 +19,7 @@ const CourseSection = () => {
     },
     {
       name: "Pro Package",
-      price: "₹1,499",
+      price: "₹2999",
       image: "/pro.png",
       features: [
         "Share Market Expert",

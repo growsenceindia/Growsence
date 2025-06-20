@@ -1,41 +1,64 @@
 "use client";
-import { FaBolt, FaCrown, FaUserGraduate, FaWallet } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { FaStar, FaRocket, FaMoneyBillWave, FaHandsHelping, FaChalkboardTeacher } from "react-icons/fa";
+
+const features = [
+  {
+    icon: <FaStar className="text-cyan-600 text-3xl md:text-4xl" />,
+    title: "Future-Ready Courses",
+    desc: "Master high-income skills like Google Ads, Website Design, AI Tools — tailored for 2025 and beyond.",
+  },
+  {
+    icon: <FaRocket className="text-pink-500 text-3xl md:text-4xl" />,
+    title: "Brahmastra Program",
+    desc: "From beginner to pro — a deep mentorship system focused on mindset, skills, and monetization.",
+  },
+  {
+    icon: <FaMoneyBillWave className="text-green-500 text-3xl md:text-4xl" />,
+    title: "90% Revenue Sharing",
+    desc: "Our affiliate system gives maximum earning potential — ₹10 Lakhs/month is real here.",
+  },
+  {
+    icon: <FaHandsHelping className="text-blue-500 text-3xl md:text-4xl" />,
+    title: "Comprehensive Support",
+    desc: "24/7 WhatsApp, Telegram, email help + GrowBot AI to solve doubts instantly.",
+  },
+  {
+    icon: <FaChalkboardTeacher className="text-purple-500 text-3xl md:text-4xl" />,
+    title: "Lead Gen Toolkit",
+    desc: "Get ad scripts, funnel videos, message templates to help you close more clients and sales.",
+  },
+];
 
 export default function WhyChooseUsSection() {
   return (
-    <section className="bg-gray-50 py-16 px-4 sm:px-8 lg:px-20">
-      <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-          Why Choose <span className="text-blue-600">Growsence</span>?
-        </h2>
-        <p className="text-gray-600 text-lg sm:text-xl mb-12 max-w-2xl mx-auto">
-          Join thousands of students transforming their lives with skill-building, real earnings, and lifestyle growth.
-        </p>
+    <section className="py-24 bg-gradient-to-b from-white to-blue-50">
+      <div className="max-w-6xl mx-auto px-6">
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl md:text-5xl font-bold text-center text-gray-800 mb-16"
+        >
+          Why <span className="text-cyan-600">Growsence</span>?
+        </motion.h2>
 
-        <div className="grid gap-8 md:grid-cols-4 sm:grid-cols-2">
-          <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition">
-            <FaBolt size={32} className="text-blue-500 mx-auto mb-4" />
-            <h4 className="text-xl font-semibold mb-2">Skill + Earning</h4>
-            <p className="text-gray-600 text-sm">Learn high-demand skills and earn instantly through affiliate sales.</p>
-          </div>
-
-          <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition">
-            <FaUserGraduate size={32} className="text-green-500 mx-auto mb-4" />
-            <h4 className="text-xl font-semibold mb-2">Student Friendly</h4>
-            <p className="text-gray-600 text-sm">Affordable pricing, 24/7 support, and mobile-first design for all learners.</p>
-          </div>
-
-          <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition">
-            <FaCrown size={32} className="text-purple-500 mx-auto mb-4" />
-            <h4 className="text-xl font-semibold mb-2">Premium Content</h4>
-            <p className="text-gray-600 text-sm">Carefully curated video + PDF content, AI tools, XP-based learning.</p>
-          </div>
-
-          <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition">
-            <FaWallet size={32} className="text-yellow-500 mx-auto mb-4" />
-            <h4 className="text-xl font-semibold mb-2">Instant Payouts</h4>
-            <p className="text-gray-600 text-sm">₹200+ payout system with 58%–75% commissions & auto course unlocks.</p>
-          </div>
+        <div className="space-y-14">
+          {features.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.15 }}
+              className="flex flex-col md:flex-row items-start gap-6 md:gap-10"
+            >
+              <div className="flex-shrink-0">{item.icon}</div>
+              <div>
+                <h3 className="text-xl md:text-2xl font-semibold text-gray-900">{item.title}</h3>
+                <p className="mt-2 text-gray-600 text-sm md:text-base max-w-3xl">{item.desc}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

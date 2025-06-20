@@ -1,58 +1,53 @@
-'use client';
-import { motion } from 'framer-motion';
-import { FaBook, FaMoneyBillWave, FaChalkboardTeacher, FaSeedling } from 'react-icons/fa';
+"use client";
+import { motion } from "framer-motion";
+import { FaGraduationCap, FaMoneyBillWave, FaHeart } from "react-icons/fa";
 
 export default function HowItWorksSection() {
   const steps = [
     {
-      icon: <FaBook size={30} />,
-      title: 'Learn',
-      desc: 'Start with powerful video courses & expert mentorship.',
+      icon: <FaGraduationCap className="text-white text-4xl" />,
+      title: "Learn",
+      description: "Unlock powerful skills like marketing, mindset, editing, and communication through expert-led video modules.",
+      color: "from-blue-500 to-cyan-500",
     },
     {
-      icon: <FaMoneyBillWave size={30} />,
-      title: 'Earn',
-      desc: 'Start earning from affiliate system and freelancing tools.',
+      icon: <FaMoneyBillWave className="text-white text-4xl" />,
+      title: "Earn",
+      description: "Earn up to ₹1 Lakhs/month by referring others, building your team, and leveling up with performance bonuses.",
+      color: "from-green-500 to-emerald-500",
     },
     {
-      icon: <FaChalkboardTeacher size={30} />,
-      title: 'Educate',
-      desc: 'Help others grow and build your own personal brand.',
-    },
-    {
-      icon: <FaSeedling size={30} />,
-      title: 'Grow',
-      desc: 'Grow mentally, emotionally & financially with Growsence.',
+      icon: <FaHeart className="text-white text-4xl" />,
+      title: "Inspire",
+      description: "Become a digital leader and inspire others by growing personally and professionally with 360° transformation.",
+      color: "from-pink-500 to-red-500",
     },
   ];
 
   return (
-    <section className="py-20 bg-white" id="how-it-works">
+    <section className="py-20 bg-gradient-to-br from-white via-blue-50 to-blue-100">
       <div className="max-w-6xl mx-auto px-6 text-center">
         <motion.h2
-          className="text-4xl font-bold mb-4 text-gray-800"
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl font-extrabold text-gray-800 mb-12"
         >
-          🚀 How Growsence Works
+          How <span className="text-cyan-600">Growsence</span> Works
         </motion.h2>
-        <p className="text-gray-500 mb-12 max-w-xl mx-auto">
-          A simple journey that transforms your skills into income and impact.
-        </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {steps.map((step, index) => (
             <motion.div
               key={index}
-              className="p-6 rounded-xl bg-gray-100 hover:bg-blue-50 shadow-md transition"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
+              transition={{ duration: 0.4, delay: index * 0.2 }}
+              className={`rounded-2xl shadow-xl bg-gradient-to-br ${step.color} text-white p-8 flex flex-col items-center`}
             >
-              <div className="text-blue-600 mb-4">{step.icon}</div>
-              <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-              <p className="text-sm text-gray-600">{step.desc}</p>
+              <div className="mb-4">{step.icon}</div>
+              <h3 className="text-2xl font-bold mb-2">{step.title}</h3>
+              <p className="text-sm opacity-90">{step.description}</p>
             </motion.div>
           ))}
         </div>

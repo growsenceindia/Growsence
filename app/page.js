@@ -1,40 +1,42 @@
 'use client';
 import HeroSection from './components/HeroSection';
-import CourseSection from './components/CourseSection';
-import CertificateSection from './components/CertificateSection';
 import CareSenseSection from './components/CareSenseSection';
 import GrowthZoneSection from './components/GrowthZoneSection';
-import XPLeaderboardSection from './components/XPLeaderboardSection';
 import TrustRefundSection from './components/TrustRefundSection';
 import FestivalBonusSection from './components/FestivalBonusSection';
 import HowItWorksSection from './components/HowItWorksSection';
-import ContactSection from './components/ContactSection';
 import FooterSection from './components/FooterSection';
 import AboutSection from "./components/AboutSection";
 import WhyChooseUsSection from "./components/WhyChooseUsSection";
 import TestimonialsSection from "./components/TestimonialsSection";
-import StudentLoginSection from './components/StudentLoginSection'
+import StatsCounterSection from "./components/StatsCounterSection";
+import ScrollProgressBar from "./components/ScrollProgressBar";
+import FAQSection from "./components/FAQSection";
+import CourseSlider from "./components/CourseSlider";
+import CoursePricingSection from "./components/CoursePricingSection";
+import Navbar from "./components/Navbar";
+import GrowBotAI from "./components/GrowBotAI";
 import { FaWhatsapp } from 'react-icons/fa'
 export default function Home() {
   return (
     <main className="bg-white text-gray-800">
+      <Navbar />
+      <ScrollProgressBar />
+      <CourseSlider />
       <HeroSection />
-      <StudentLoginSection />
       <AboutSection />
+      <StatsCounterSection />
+      <CoursePricingSection />
+      <HowItWorksSection />
       <WhyChooseUsSection />
       <TestimonialsSection />
-      <CourseSection />
-      <CertificateSection />
       <CareSenseSection />
       <GrowthZoneSection />
-      <XPLeaderboardSection />
       <TrustRefundSection />
       <FestivalBonusSection />
-      <HowItWorksSection />
-      <ContactSection />
+      <FAQSection />
       <FooterSection />
-    
-
+  <GrowBotAI />
       {/* WhatsApp Floating Button */}
       <a
         href="https://wa.me/919835742586"
