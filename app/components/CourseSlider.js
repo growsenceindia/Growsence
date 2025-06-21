@@ -3,67 +3,48 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 const courses = [
-  {
-    title: "Affiliate Marketing",
-    image: "/courses/affiliate.jpg",
-  },
-  {
-    title: "Video Editing",
-    image: "/courses/video.jpg",
-  },
-  {
-    title: "Option Trading",
-    image: "/courses/trading.jpg",
-  },
-  {
-    title: "Social Media Marketing",
-    image: "/courses/social.jpg",
-  },
-  {
-    title: "Millionaire Mindset",
-    image: "/courses/mindset.jpg",
-  },
-  {
-    title: "Graphic Design",
-    image: "/courses/design.jpg",
-  },
+  { image: "/courses/affiliate.jpg" },
+  { image: "/courses/video.jpg" },
+  { image: "/courses/trading.jpg" },
+  { image: "/courses/social.jpg" },
+  { image: "/courses/mindset.jpg" },
+  { image: "/courses/design.jpg" },
 ];
 
 export default function CourseSlider() {
   const scrollRef = useRef(null);
 
   useEffect(() => {
-    const scrollInterval = setInterval(() => {
+    const interval = setInterval(() => {
       if (scrollRef.current) {
-        scrollRef.current.scrollBy({
-          left: 400,
-          behavior: "smooth",
-        });
-        if (
-          scrollRef.current.scrollLeft + scrollRef.current.clientWidth >=
-          scrollRef.current.scrollWidth - 10
-        ) {
+        const { scrollLeft, clientWidth, scrollWidth } = scrollRef.current;
+        const nextScroll = scrollLeft + clientWidth;
+
+        if (nextScroll >= scrollWidth - 5) {
           scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+          scrollRef.current.scrollBy({ left: clientWidth, behavior: "smooth" });
         }
       }
-    }, 3000);
-    return () => clearInterval(scrollInterval);
+    }, 3500);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="relative z-10 bg-gradient-to-r from-gray-900 via-black to-gray-900 py-6 px-4 md:px-8 mt-12">
+    <section className="bg-gradient-to-r from-[#0f0c29] via-[#302b63] to-[#24243e] py-10 px-4 md:px-8 mt-24 overflow-hidden">
       <div
         ref={scrollRef}
-        className="flex gap-6 overflow-x-auto scroll-smooth no-scrollbar px-2 snap-x snap-mandatory"
+        className="flex justify-center overflow-x-auto scroll-smooth no-scrollbar snap-x snap-mandatory"
       >
         {courses.map((course, index) => (
           <div
             key={index}
-            className="min-w-[90vw] md:min-w-[65vw] lg:min-w-[45vw] snap-center rounded-2xl bg-white/10 backdrop-blur-md shadow-xl border border-white/10 overflow-hidden transition-transform hover:scale-105 duration-500"
+            className="snap-center shrink-0 w-[90%] md:w-[70%] lg:w-[60%] rounded-2xl overflow-hidden shadow-2xl border border-white/10 transition-transform duration-500 hover:scale-105"
           >
             <Image
               src={course.image}
-              alt={course.title}
+              alt={`Course ${index + 1}`}
               width={1280}
               height={720}
               className="w-full h-auto object-cover aspect-video"

@@ -6,31 +6,57 @@ export default function CoursePricingSection() {
     {
       title: "Basic Package",
       price: "₹1499",
+      amount: 1499,
       features: [
-        "Spoken English",
-        "Affiliate Marketing",
-        "Lead Generation",
-        "Communication Skills",
-        "Video Editing",
+        "📢 Spoken English",
+        "📈 Affiliate Marketing",
+        "🔍 Lead Generation",
+        "🗣️ Communication Skills",
+        "🎬 Video Editing",
       ],
       recommended: false,
     },
     {
       title: "Pro Package",
       price: "₹2999",
+      amount: 2999,
       features: [
-        "Share Market Expert",
-        "Graphic Design",
-        "Millionaire Mindset",
-        "YouTube, Facebook, Instagram Marketing",
-        "WhatsApp Marketing",
+        "📊 Share Market Expert",
+        "🎨 Graphic Design",
+        "💸 Millionaire Mindset",
+        "📺 YouTube, FB, Insta Marketing",
+        "📲 WhatsApp Marketing",
       ],
       recommended: true,
     },
   ];
 
+  const handlePayment = async (amount) => {
+    try {
+      const res = await fetch("/api/cashfree/initiate-payment", {
+        method: "POST",
+        body: JSON.stringify({
+          name: "Growsence Student",
+          email: "student@email.com", // Replace with real email from user data
+          phone: "9876543210",        // Replace with real phone from user data
+          amount,
+        }),
+      });
+
+      const data = await res.json();
+      if (data.payment_link) {
+        window.location.href = data.payment_link;
+      } else {
+        alert("Failed to initiate payment. Reason: " + (data.error || "Unknown"));
+      }
+    } catch (error) {
+      console.error("Payment Error:", error);
+      alert("Something went wrong while initiating payment.");
+    }
+  };
+
   return (
-    <section className="bg-gradient-to-br from-blue-50 to-white py-16 px-4" id="pricing">
+    <section className="bg-gradient-to-br from-blue-50 to-white py-20 px-4" id="pricing">
       <div className="max-w-6xl mx-auto text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -38,7 +64,7 @@ export default function CoursePricingSection() {
           transition={{ duration: 0.6 }}
           className="text-4xl md:text-5xl font-bold text-gray-800 mb-12"
         >
-          Choose Your Plan
+          🎓 Choose Your Plan
         </motion.h2>
 
         <div className="grid md:grid-cols-2 gap-10">
@@ -56,7 +82,7 @@ export default function CoursePricingSection() {
             >
               {plan.recommended && (
                 <span className="absolute top-4 right-4 bg-yellow-500 text-white px-3 py-1 rounded-full text-xs">
-                  Most Popular
+                  ⭐ Most Popular
                 </span>
               )}
               <h3 className="text-2xl font-bold text-gray-800 mb-4">{plan.title}</h3>
@@ -68,7 +94,11 @@ export default function CoursePricingSection() {
                   </li>
                 ))}
               </ul>
-              <button className="mt-6 w-full bg-blue-700 text-white py-3 rounded-full hover:bg-blue-800 transition duration-300 shadow-md font-semibold">
+
+              <button
+                onClick={() => handlePayment(plan.amount)}
+                className="mt-6 w-full bg-blue-700 text-white py-3 rounded-full hover:bg-blue-800 transition duration-300 shadow-md font-semibold text-lg"
+              >
                 Start Now
               </button>
             </motion.div>
