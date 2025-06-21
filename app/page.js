@@ -15,7 +15,6 @@ import FAQSection from "./components/FAQSection";
 import CourseSlider from "./components/CourseSlider";
 import CoursePricingSection from "./components/CoursePricingSection";
 import Navbar from "./components/Navbar";
-import GrowBotAI from "./components/GrowBotAI";
 import { FaWhatsapp } from 'react-icons/fa'
 export default function Home() {
   return (
@@ -36,7 +35,6 @@ export default function Home() {
       <FestivalBonusSection />
       <FAQSection />
       <FooterSection />
-  <GrowBotAI />
       {/* WhatsApp Floating Button */}
       <a
         href="https://wa.me/919835742586"
