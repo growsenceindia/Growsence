@@ -28,7 +28,7 @@ export default function StudentPanel() {
             <div className="flex flex-wrap gap-4">
               <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-4 rounded-xl text-white w-64">
                 <div className="font-semibold">₹ {student.earnings}</div>
-                <div className="text-sm">Today's Earnings</div>
+                <div className="text-sm">Today&apos;s Earnings</div>
               </div>
               <div className="bg-red-400 p-4 rounded-xl text-white w-64">
                 <div className="font-semibold">₹ {student.earnings}</div>
