@@ -24,7 +24,10 @@ export default function HeroSection() {
   };
 
   useEffect(() => {
-    if (typeof window !== "undefined" && isSignInWithEmailLink(auth, window.location.href)) {
+    if (
+      typeof window !== "undefined" &&
+      isSignInWithEmailLink(auth, window.location.href)
+    ) {
       const storedEmail = window.localStorage.getItem("emailForSignIn");
       if (storedEmail) {
         signInWithEmailLink(auth, storedEmail, window.location.href)
@@ -63,7 +66,8 @@ export default function HeroSection() {
       <div className="max-w-5xl mx-auto text-center z-10 relative">
         <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
           🚀 Transform Your Life. <br />
-          📚 Learn,💸Earn & 💡Grow with <span className="text-green-400">Growsence</span>
+          📚 Learn,💸Earn & 💡Grow with{" "}
+          <span className="text-green-400">Growsence</span>
         </h1>
         <p className="text-lg md:text-xl text-gray-200 mb-10">
           India&apos;s Most Advanced Ed-Tech + Affiliate Platform for Students.
@@ -106,7 +110,6 @@ export default function HeroSection() {
                 alt="Google"
                 width={20}
                 height={20}
-                className="w-5 h-5"
               />
               Log in via Google
             </button>
@@ -140,7 +143,10 @@ export default function HeroSection() {
             <div className="mt-6 text-center">
               <p className="text-sm">
                 Don&apos;t have an account?{" "}
-                <a href="/courses" className="text-blue-600 font-medium hover:underline">
+                <a
+                  href="/courses"
+                  className="text-blue-600 font-medium hover:underline"
+                >
                   Enroll Now
                 </a>
               </p>
@@ -149,7 +155,7 @@ export default function HeroSection() {
                 <a href="/terms" className="underline">
                   Terms of Service
                 </a>{" "}
-                &{" "}
+                &amp;{" "}
                 <a href="/privacy" className="underline">
                   Privacy Policy
                 </a>
