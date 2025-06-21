@@ -94,7 +94,9 @@ export default function DomesticTripPage() {
         <div className="grid gap-6 md:grid-cols-3">
           {testimonials.map((t, i) => (
             <div key={i} className="bg-yellow-50 p-6 rounded-xl shadow text-center">
-              <p className="text-gray-700 italic">{t.text.replace(/"/g, '&quot;')}</p>
+              <p className="text-gray-700 italic">
+  {t.text.replace(/"/g, '&quot;').replace(/'/g, '&apos;')}
+</p>
 
               <h4 className="mt-4 font-bold">– {t.name}</h4>
             </div>
