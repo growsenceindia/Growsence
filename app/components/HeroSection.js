@@ -66,7 +66,7 @@ export default function HeroSection() {
           📚 Learn,💸Earn & 💡Grow with <span className="text-green-400">Growsence</span>
         </h1>
         <p className="text-lg md:text-xl text-gray-200 mb-10">
-          India’s Most Advanced Ed-Tech + Affiliate Platform for Students.
+          India&apos;s Most Advanced Ed-Tech + Affiliate Platform for Students.
         </p>
         <div className="flex justify-center gap-4 flex-wrap">
           <button
