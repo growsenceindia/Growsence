@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { auth } from "../../lib/firebase";
 import {
   GoogleAuthProvider,
@@ -31,17 +32,17 @@ export default function HeroSection() {
             window.localStorage.removeItem("emailForSignIn");
             router.push("/student/page");
           })
-          .catch((err) => setError("Link expired or invalid."));
+          .catch(() => setError("Link expired or invalid."));
       }
     }
-  }, []);
+  }, [router]);
 
   const handleGoogleLogin = async () => {
     try {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
       router.push("/student/page");
-    } catch (err) {
+    } catch {
       setError("Google login failed.");
     }
   };
@@ -52,7 +53,7 @@ export default function HeroSection() {
       await sendSignInLinkToEmail(auth, email, actionCodeSettings);
       window.localStorage.setItem("emailForSignIn", email);
       setMessage("📩 OTP link sent! Check your email.");
-    } catch (err) {
+    } catch {
       setError("Failed to send OTP link.");
     }
   };
@@ -100,7 +101,13 @@ export default function HeroSection() {
               onClick={handleGoogleLogin}
               className="w-full flex items-center justify-center gap-3 border border-gray-300 py-2 rounded-md hover:bg-gray-50 mb-4"
             >
-              <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" className="w-5 h-5" />
+              <Image
+                src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                alt="Google"
+                width={20}
+                height={20}
+                className="w-5 h-5"
+              />
               Log in via Google
             </button>
 
@@ -131,9 +138,21 @@ export default function HeroSection() {
             {error && <p className="text-red-500 text-sm mt-4">{error}</p>}
 
             <div className="mt-6 text-center">
-              <p className="text-sm">Don't have an account? <a href="/courses" className="text-blue-600 font-medium hover:underline">Enroll Now</a></p>
+              <p className="text-sm">
+                Don&apos;t have an account?{" "}
+                <a href="/courses" className="text-blue-600 font-medium hover:underline">
+                  Enroll Now
+                </a>
+              </p>
               <p className="text-xs text-gray-400 mt-3">
-                By continuing, you agree to our <a href="/terms" className="underline">Terms of Service</a> & <a href="/privacy" className="underline">Privacy Policy</a>
+                By continuing, you agree to our{" "}
+                <a href="/terms" className="underline">
+                  Terms of Service
+                </a>{" "}
+                &{" "}
+                <a href="/privacy" className="underline">
+                  Privacy Policy
+                </a>
               </p>
             </div>
           </div>
