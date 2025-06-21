@@ -142,14 +142,11 @@ export default function HeroSection() {
 
             <div className="mt-6 text-center">
               <p className="text-sm">
-                Don&apos;t have an account?{" "}
-                <a
-                  href="/courses"
-                  className="text-blue-600 font-medium hover:underline"
-                >
-                  Enroll Now
-                </a>
-              </p>
+  Don&apos;t have an account?{" "}
+  <a href="/courses" className="text-blue-600 font-medium hover:underline">
+    Enroll Now
+  </a>
+</p>
               <p className="text-xs text-gray-400 mt-3">
                 By continuing, you agree to our{" "}
                 <a href="/terms" className="underline">
