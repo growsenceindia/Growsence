@@ -51,7 +51,7 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.6 }}
           className="text-4xl font-bold text-center text-gray-800 mb-12"
         >
-          Loved by 10 Lakh+ Students
+          Loved by 500+ Students
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

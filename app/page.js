@@ -1,9 +1,5 @@
 'use client';
 import HeroSection from './components/HeroSection';
-import CareSenseSection from './components/CareSenseSection';
-import GrowthZoneSection from './components/GrowthZoneSection';
-import TrustRefundSection from './components/TrustRefundSection';
-import FestivalBonusSection from './components/FestivalBonusSection';
 import HowItWorksSection from './components/HowItWorksSection';
 import FooterSection from './components/FooterSection';
 import AboutSection from "./components/AboutSection";
@@ -13,6 +9,7 @@ import StatsCounterSection from "./components/StatsCounterSection";
 import ScrollProgressBar from "./components/ScrollProgressBar";
 import FAQSection from "./components/FAQSection";
 import CourseSlider from "./components/CourseSlider";
+import LegalCertificatesSection from "./components/LegalCertificatesSection";
 import CoursePricingSection from "./components/CoursePricingSection";
 import Navbar from "./components/Navbar";
 import { FaWhatsapp } from 'react-icons/fa'
@@ -29,10 +26,7 @@ export default function Home() {
       <HowItWorksSection />
       <WhyChooseUsSection />
       <TestimonialsSection />
-      <CareSenseSection />
-      <GrowthZoneSection />
-      <TrustRefundSection />
-      <FestivalBonusSection />
+      <LegalCertificatesSection />
       <FAQSection />
       <FooterSection />
       {/* WhatsApp Floating Button */}
