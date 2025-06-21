@@ -12,7 +12,7 @@ export default function PrivacyPolicyPage() {
         <p>Welcome to <strong>Growsence</strong> — your trusted companion on the path of learning and growth. We value your privacy, your data, and your dreams. This Privacy Policy explains how we collect, protect, and use your personal information while delivering a secure and inspiring digital experience.</p>
 
         <h2 className="text-xl font-semibold">1. Your Agreement with Growsence</h2>
-        <p>By accessing or using any part of the Growsence platform, you agree to this Privacy Policy. If you're not comfortable with any part of it, we request you to contact us — or simply refrain from using our services.</p>
+        <p>By accessing or using any part of the Growsence platform, you agree to this Privacy Policy. If you&apos;re not comfortable with any part of it, we request you to contact us — or simply refrain from using our services.</p>
 
         <h2 className="text-xl font-semibold">2. What We Collect</h2>
         <ul className="list-disc pl-5">
@@ -59,7 +59,7 @@ export default function PrivacyPolicyPage() {
         <p>No refund is allowed after 24 hours or for any course upgrade.</p>
 
         <h2 className="text-xl font-semibold">7. Subscriptions</h2>
-        <p>Some services may require recurring billing. You'll always be informed before auto-renewals. Failure to pay on time may result in account suspension.</p>
+        <p>Some services may require recurring billing. You&apos;ll always be informed before auto-renewals. Failure to pay on time may result in account suspension.</p>
 
         <h2 className="text-xl font-semibold">8. Things You Shouldn’t Do 🚫</h2>
         <ul className="list-disc pl-5">
@@ -96,7 +96,7 @@ export default function PrivacyPolicyPage() {
         <p>Growsence is not liable for indirect or accidental damages. Our total liability is limited to the amount you paid for our services.</p>
 
         <h2 className="text-xl font-semibold">16. Termination of Service</h2>
-        <p>We may deactivate accounts that violate our policies. You can stop using Growsence anytime, though refunds won't apply post 24 hours.</p>
+        <p>We may deactivate accounts that violate our policies. You can stop using Growsence anytime, though refunds won&apos;t apply post 24 hours.</p>
 
         <h2 className="text-xl font-semibold">17. Governing Law</h2>
         <p>This policy is governed by the <strong>laws of India</strong>, with jurisdiction under <strong>Patna, Bihar</strong>.</p>
