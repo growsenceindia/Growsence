@@ -5,7 +5,7 @@ export default function CoursePricingSection() {
   const plans = [
     {
       title: "Basic Package",
-      price: "₹499",
+      price: "₹1499",
       features: [
         "Spoken English",
         "Affiliate Marketing",
@@ -17,7 +17,7 @@ export default function CoursePricingSection() {
     },
     {
       title: "Pro Package",
-      price: "₹1999",
+      price: "₹2999",
       features: [
         "Share Market Expert",
         "Graphic Design",
