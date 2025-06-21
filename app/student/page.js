@@ -28,7 +28,7 @@ export default function StudentPanel() {
             <div className="flex flex-wrap gap-4">
               <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-4 rounded-xl text-white w-64">
                 <div className="font-semibold">₹ {student.earnings}</div>
-                <div className="text-sm">Today&apos;s Earnings</div>
+                <div className=`&quot;text-sm">Today&apos;s Earnings</div>
               </div>
               <div className="bg-red-400 p-4 rounded-xl text-white w-64">
                 <div className="font-semibold">₹ {student.earnings}</div>
@@ -42,7 +42,7 @@ export default function StudentPanel() {
             <div className="mt-6">
               <h3 className="text-xl font-bold mb-2">🎯 Daily Affirmation</h3>
               <div className="bg-yellow-100 p-4 rounded-xl text-center font-semibold italic">
-                "I am growing every day and becoming the best version of myself."
+                `&quot;I am growing every day and becoming the best version of myself.`&quot;
               </div>
             </div>
           </div>
