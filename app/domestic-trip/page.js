@@ -1,101 +1,127 @@
-"use client";
-
-import Image from "next/image";
-import { motion } from "framer-motion";
+'use client';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function DomesticTripPage() {
-  const trips = [
-    {
-      title: "Manali Adventure",
-      img: "/trips/manali.jpg",
-      desc: "3 nights, 4 days with full Himalayan adventure and snowfall experience.",
-      price: "₹12,999",
-    },
-    {
-      title: "Goa Chillout",
-      img: "/trips/goa.jpg",
-      desc: "Beach vibes, water sports, and unforgettable parties.",
-      price: "₹9,499",
-    },
-    {
-      title: "Rajasthan Royal",
-      img: "/trips/rajasthan.jpg",
-      desc: "Explore forts, camel safari, and local heritage.",
-      price: "₹10,799",
-    },
+  const [faqOpen, setFaqOpen] = useState(null);
+  const toggleFAQ = (index) => {
+    setFaqOpen(faqOpen === index ? null : index);
+  };
+
+  const upcomingTrips = [
+    { img: '/trips/goa.jpg', city: 'Goa', date: '15–17 July', price: '₹5999' },
+    { img: '/trips/shimla.jpg', city: 'Shimla', date: '1–3 August', price: '₹5499' },
+    { img: '/trips/jaipur.jpg', city: 'Jaipur', date: '20–22 August', price: '₹4999' },
+  ];
+
+  const faqs = [
+    { q: 'Can I join solo?', a: 'Yes, many students join solo and make new friends!' },
+    { q: 'What’s included in the fee?', a: 'Stay, meals, workshops, sightseeing, and certificates.' },
+    { q: 'Is it safe for girls?', a: 'Absolutely. We ensure full safety with verified mentors and 24x7 support.' },
+    { q: 'Is there a refund option?', a: 'Refund is available if canceled 7 days prior to trip start date.' },
+  ];
+
+  const pastTrips = [
+    { city: 'Shimla', date: 'Jan 2024', students: 40 },
+    { city: 'Manali', date: 'Oct 2023', students: 32 },
+    { city: 'Goa', date: 'Aug 2023', students: 50 },
+  ];
+
+  const itinerary = [
+    { day: 'Day 1', activity: 'Arrival + Icebreaker Games + Bonfire Night' },
+    { day: 'Day 2', activity: 'Mindset Workshop + Adventure Activity + Beach Party' },
+    { day: 'Day 3', activity: 'Certification + Group Reflection + Return' },
+  ];
+
+  const testimonials = [
+    { name: 'Anjali Sharma', text: 'The Growsence trip was life-changing! I made so many friends and gained confidence.' },
+    { name: 'Rohit Mehta', text: 'Great mix of fun and learning. The workshops were amazing and so were the beaches!' },
+    { name: 'Priya Das', text: 'Felt super safe and motivated throughout the journey. Highly recommend to all students.' }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white text-gray-800">
-      {/* Hero */}
-      <div className="relative h-[60vh] w-full">
-        <Image
-          src="/trips/hero.jpg"
-          alt="Domestic Trip Hero"
-          fill
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-white text-4xl md:text-5xl font-bold text-center"
-          >
-            Explore India with Growsence 🌏
-          </motion.h1>
-        </div>
-      </div>
+    <main className="bg-white text-gray-900">
+      {/* Certificate & Badge Preview */}
+      <section className="py-16 px-4 bg-white text-center">
+        <h2 className="text-3xl font-bold mb-4">Official Certificate & Badge</h2>
+        <p className="mb-6 max-w-2xl mx-auto">Every participant receives a digitally verifiable certificate & achievement badge.</p>
+        <Image src="/certificate-preview.jpg" alt="Growsence Certificate" width={700} height={400} className="mx-auto rounded-xl shadow-lg" />
+      </section>
 
-      {/* Trip Cards */}
-      <section className="py-12 px-4 max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-8">Upcoming Trips</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {trips.map((trip, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ scale: 1.03 }}
-              className="rounded-xl bg-white shadow-md overflow-hidden"
-            >
-              <Image src={trip.img} alt={trip.title} width={500} height={300} className="w-full h-56 object-cover" />
-              <div className="p-4">
-                <h3 className="text-xl font-semibold mb-2">{trip.title}</h3>
-                <p className="text-sm mb-3">{trip.desc}</p>
-                <p className="font-bold text-blue-600 mb-3">{trip.price}</p>
-                <button className="bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 transition">Book Now</button>
-              </div>
-            </motion.div>
+      {/* Leader Profile */}
+      <section className="py-16 px-4 bg-gray-50 text-center">
+        <h2 className="text-3xl font-bold mb-4">Meet Your Mentor</h2>
+        <div className="max-w-xl mx-auto bg-white p-6 rounded-xl shadow-md">
+          <Image src="/leader.jpg" alt="Trip Leader" width={120} height={120} className="mx-auto rounded-full mb-4" />
+          <h3 className="text-xl font-semibold">Ravi Sinha</h3>
+          <p className="text-gray-600">Certified Life Coach & Trip Mentor</p>
+          <p className="mt-3 text-sm">Led over 12 successful educational trips with 500+ students.</p>
+        </div>
+      </section>
+
+      {/* Trip Gallery */}
+      <section className="py-16 px-4 max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-8">Trip Memories Gallery</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {[1,2,3,4,5,6].map(i => (
+            <Image key={i} src={`/gallery/img${i}.jpg`} alt={`Trip Memory ${i}`} width={400} height={300} className="rounded-xl object-cover w-full h-60" />
           ))}
         </div>
       </section>
 
-      {/* Features */}
-      <section className="bg-blue-50 py-12 px-4">
-        <h2 className="text-2xl font-bold text-center mb-6">Why Travel with Growsence?</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          {[
-            ["🏨", "Top Hotels", "Stay in hand-picked premium properties."],
-            ["🚌", "Comfort Travel", "A/C travel with experienced coordinators."],
-            ["🍽️", "Meals Included", "Enjoy hygienic and tasty food."],
-            ["📞", "24/7 Support", "On-trip help and assistance anytime."],
-          ].map(([icon, title, desc], i) => (
-            <div key={i} className="bg-white p-6 rounded-xl shadow">
-              <div className="text-4xl mb-2">{icon}</div>
-              <h3 className="font-semibold text-lg mb-1">{title}</h3>
-              <p className="text-sm text-gray-600">{desc}</p>
+      {/* Instagram Embed */}
+      <section className="py-16 px-4 bg-white text-center">
+        <h2 className="text-3xl font-bold mb-6">Follow Our Journey</h2>
+        <iframe src="https://www.instagram.com/growsenceindia/embed" className="mx-auto w-full max-w-xl h-[500px] border-0 rounded-xl shadow-md"></iframe>
+      </section>
+
+      {/* Live Stats */}
+      <section className="py-16 px-4 bg-yellow-100 text-center">
+        <h2 className="text-3xl font-bold mb-6">🚀 Impact So Far</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-xl font-semibold">
+          <div className="bg-white rounded-xl p-6 shadow">12+ Trips</div>
+          <div className="bg-white rounded-xl p-6 shadow">500+ Students</div>
+          <div className="bg-white rounded-xl p-6 shadow">25+ Cities Covered</div>
+          <div className="bg-white rounded-xl p-6 shadow">100% Memories Made</div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-16 px-4 bg-white max-w-5xl mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-8">What Students Say</h2>
+        <div className="grid gap-6 md:grid-cols-3">
+          {testimonials.map((t, i) => (
+            <div key={i} className="bg-yellow-50 p-6 rounded-xl shadow text-center">
+              <p className="text-gray-700 italic">"{t.text}"</p>
+              <h4 className="mt-4 font-bold">– {t.name}</h4>
             </div>
           ))}
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="text-center py-12">
-        <h2 className="text-3xl font-bold mb-4">Ready to Explore?</h2>
-        <p className="text-gray-600 mb-6">Book your adventure with Growsence today.</p>
-        <button className="bg-gradient-to-r from-pink-500 to-red-500 text-white py-3 px-6 rounded-full text-lg shadow hover:scale-105 transition">
-          Contact Now
-        </button>
+      {/* Countdown Timer */}
+      <section className="py-16 px-4 bg-gray-100 text-center">
+        <h2 className="text-3xl font-bold mb-4">⏳ Countdown to Next Trip</h2>
+        <p className="text-lg mb-6">Trip to Goa starts in:</p>
+        <div id="timer" className="text-4xl font-bold">⏱ 24 Days 13 Hours</div>
       </section>
-    </div>
+
+      {/* Trip Video Embed */}
+      <section className="py-16 px-4 bg-white text-center">
+        <h2 className="text-3xl font-bold mb-6">📽️ Watch Trip Highlights</h2>
+        <div className="aspect-w-16 aspect-h-9 max-w-3xl mx-auto">
+          <iframe className="w-full h-full rounded-xl shadow-md" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Trip Video" allowFullScreen></iframe>
+        </div>
+      </section>
+
+      {/* Join Now CTA */}
+      <section className="py-16 px-4 bg-yellow-400 text-center rounded-t-3xl">
+        <h2 className="text-3xl font-bold mb-4">Ready for the Next Adventure?</h2>
+        <p className="mb-6">Limited seats available. Reserve yours now!</p>
+        <Link href="https://wa.me/919835742586" target="_blank" className="bg-black text-white py-3 px-6 rounded-full font-semibold">Chat & Register</Link>
+      </section>
+    </main>
   );
 }
