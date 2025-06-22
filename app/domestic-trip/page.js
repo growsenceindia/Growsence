@@ -45,8 +45,8 @@ export default function DomesticTripPage() {
     <main className="bg-white text-gray-900">
       {/* Certificate & Badge Preview */}
       <section className="py-16 px-4 bg-white text-center">
-        <h2 className="text-3xl font-bold mb-4">Official Certificate & Badge</h2>
-        <p className="mb-6 max-w-2xl mx-auto">Every participant receives a digitally verifiable certificate & achievement badge.</p>
+        <h2 className="text-3xl font-bold mb-4">Official Certificate &amp; Badge</h2>
+        <p className="mb-6 max-w-2xl mx-auto">Every participant receives a digitally verifiable certificate &amp; achievement badge.</p>
         <Image src="/certificate-preview.jpg" alt="Growsence Certificate" width={700} height={400} className="mx-auto rounded-xl shadow-lg" />
       </section>
 
@@ -56,7 +56,7 @@ export default function DomesticTripPage() {
         <div className="max-w-xl mx-auto bg-white p-6 rounded-xl shadow-md">
           <Image src="/leader.jpg" alt="Trip Leader" width={120} height={120} className="mx-auto rounded-full mb-4" />
           <h3 className="text-xl font-semibold">Ravi Sinha</h3>
-          <p className="text-gray-600">Certified Life Coach & Trip Mentor</p>
+          <p className="text-gray-600">Certified Life Coach &amp; Trip Mentor</p>
           <p className="mt-3 text-sm">Led over 12 successful educational trips with 500+ students.</p>
         </div>
       </section>
@@ -95,9 +95,8 @@ export default function DomesticTripPage() {
           {testimonials.map((t, i) => (
             <div key={i} className="bg-yellow-50 p-6 rounded-xl shadow text-center">
               <p className="text-gray-700 italic">
-  {t.text.replace(/"/g, '&quot;').replace(/'/g, '&apos;')}
-</p>
-
+                {t.text.replace(/"/g, '&quot;').replace(/'/g, '&apos;')}
+              </p>
               <h4 className="mt-4 font-bold">– {t.name}</h4>
             </div>
           ))}
@@ -123,8 +122,8 @@ export default function DomesticTripPage() {
       <section className="py-16 px-4 bg-yellow-400 text-center rounded-t-3xl">
         <h2 className="text-3xl font-bold mb-4">Ready for the Next Adventure?</h2>
         <p className="mb-6">Limited seats available. Reserve yours now!</p>
-        <Link href="https://wa.me/919835742586" target="_blank" className="bg-black text-white py-3 px-6 rounded-full font-semibold">Chat & Register</Link>
+        <Link href="https://wa.me/919835742586" target="_blank" className="bg-black text-white py-3 px-6 rounded-full font-semibold">Chat &amp; Register</Link>
       </section>
     </main>
   );
-}
+        }
