@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { motion } from "framer-motion";
 
 export default function CoursePricingSection() {
@@ -33,25 +33,28 @@ export default function CoursePricingSection() {
 
   const handlePayment = async (amount) => {
     try {
-      const res = await fetch("/api/cashfree/initiate-payment", {
+      const res = await fetch("/api/create-payment-session", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           name: "Growsence Student",
-          email: "student@email.com", // Replace with real email from user data
+          email: "student@email.com", // Replace with real email from logged-in user
           phone: "9876543210",        // Replace with real phone from user data
           amount,
         }),
       });
 
       const data = await res.json();
-      if (data.payment_link) {
-        window.location.href = data.payment_link;
+      if (data.link) {
+        window.location.href = data.link;
       } else {
-        alert("Failed to initiate payment. Reason: " + (data.error || "Unknown"));
+        alert("Payment failed: " + (data.error || "Unknown issue"));
       }
     } catch (error) {
       console.error("Payment Error:", error);
-      alert("Something went wrong while initiating payment.");
+      alert("Something went wrong. Please try again.");
     }
   };
 
