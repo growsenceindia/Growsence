@@ -28,7 +28,7 @@ export default function StudentPanel() {
             <div className="flex flex-wrap gap-4">
               <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-4 rounded-xl text-white w-64">
                 <div className="font-semibold">₹ {student.earnings}</div>
-                <div className=`&quot;text-sm">Today&apos;s Earnings</div>
+                <div className="text-sm">Today&apos;s Earnings</div>
               </div>
               <div className="bg-red-400 p-4 rounded-xl text-white w-64">
                 <div className="font-semibold">₹ {student.earnings}</div>
@@ -42,7 +42,7 @@ export default function StudentPanel() {
             <div className="mt-6">
               <h3 className="text-xl font-bold mb-2">🎯 Daily Affirmation</h3>
               <div className="bg-yellow-100 p-4 rounded-xl text-center font-semibold italic">
-                `&quot;I am growing every day and becoming the best version of myself.`&quot;
+                &quot;I am growing every day and becoming the best version of myself.&quot;
               </div>
             </div>
           </div>
@@ -52,7 +52,7 @@ export default function StudentPanel() {
       case 'My Courses':
         return <div><h2 className="text-2xl font-bold mb-4">My Courses</h2><p>Video player + PDFs + test link</p></div>;
       case 'Plan':
-        return <div><h2 className="text-2xl font-bold mb-4">My Plan</h2><p>Basic / Pro plan status & upgrade option</p></div>;
+        return <div><h2 className="text-2xl font-bold mb-4">My Plan</h2><p>Basic / Pro plan status &amp; upgrade option</p></div>;
       case 'Startup Video':
         return <div><h2 className="text-2xl font-bold mb-4">Startup Video</h2><iframe className="w-full h-64" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowFullScreen></iframe></div>;
       case 'Social Media':
@@ -70,7 +70,7 @@ export default function StudentPanel() {
       case 'Leaderboard':
         return <div><h2 className="text-2xl font-bold mb-4">Leaderboard</h2><p>XP Rank List with Animation</p></div>;
       case 'Vision Board':
-        return <div><h2 className="text-2xl font-bold mb-4">Vision Board</h2><p>Set goals using images & text</p></div>;
+        return <div><h2 className="text-2xl font-bold mb-4">Vision Board</h2><p>Set goals using images &amp; text</p></div>;
       default:
         return <p>Coming Soon...</p>;
     }
@@ -98,4 +98,4 @@ export default function StudentPanel() {
       </main>
     </div>
   );
-}
+      }
