@@ -32,31 +32,28 @@ export default function CoursePricingSection() {
   ];
 
   const handlePayment = async (amount) => {
-    try {
-      const res = await fetch("/api/create-payment-session", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: "Growsence Student",
-          email: "student@email.com", // Replace with real email from logged-in user
-          phone: "9876543210",        // Replace with real phone from user data
-          amount,
-        }),
-      });
+  try {
+    const res = await fetch("/api/create-payment-session", {
+      method: "POST",
+      body: JSON.stringify({
+        name: "Growsence Student",
+        email: "student@email.com",
+        phone: "9876543210",
+        amount,
+      }),
+    });
 
-      const data = await res.json();
-      if (data.link) {
-        window.location.href = data.link;
-      } else {
-        alert("Payment failed: " + (data.error || "Unknown issue"));
-      }
-    } catch (error) {
-      console.error("Payment Error:", error);
-      alert("Something went wrong. Please try again.");
+    const data = await res.json();
+    if (data.payment_link) {
+      window.location.href = data.payment_link;
+    } else {
+      alert("Payment failed: " + data.error);
     }
-  };
+  } catch (error) {
+    console.error("Payment error:", error);
+    alert("Something went wrong during payment");
+  }
+};
 
   return (
     <section className="bg-gradient-to-br from-blue-50 to-white py-20 px-4" id="pricing">
