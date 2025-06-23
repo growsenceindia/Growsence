@@ -1,78 +1,165 @@
 "use client";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { FaStar } from "react-icons/fa";
+import Link from "next/link";
 
-export default function CoursesPage() {
-  const router = useRouter();
+export default function BasicPackagePage() {
+  const [faqOpen, setFaqOpen] = useState(null);
+  const [rating, setRating] = useState(0);
+  const [hoverRating, setHoverRating] = useState(0);
+  const [review, setReview] = useState("");
 
-  const courses = [
+  const toggleFAQ = (index) => {
+    setFaqOpen(faqOpen === index ? null : index);
+  };
+
+  const faqs = [
     {
-      id: "pro",
-      title: "Pro Package",
-      image: "/images/pro-package.png", // Upload a 16:9 image in public/images
-      modules: 8,
-      language: "Hindi",
-      access: "Lifetime",
-      price: "₹2999",
+      question: "Is this package suitable for beginners?",
+      answer: "Absolutely! This package is designed especially for beginners with zero experience.",
     },
     {
-      id: "basic",
-      title: "Basic Package",
-      image: "/images/basic-package.png", // Upload a 16:9 image in public/images
-      modules: 4,
-      language: "Hindi",
-      access: "Lifetime",
-      price: "₹1499",
+      question: "How do I get the certificate?",
+      answer: "Complete all modules. Certificate is auto-generated and can be downloaded.",
+    },
+    {
+      question: "Are there any live classes?",
+      answer: "This package is 100% pre-recorded. However, doubt support is available via WhatsApp.",
     },
   ];
 
-  return (
-    <div className="min-h-screen bg-gray-100 text-gray-900">
-      {/* Top Pro Recommendations */}
-      <section className="py-10 bg-gradient-to-r from-indigo-700 to-purple-800 text-white px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-2">🔥 Recommended Courses</h2>
-          <p className="text-lg opacity-90">Unlock your potential with our top-performing Pro courses.</p>
-        </div>
-      </section>
+  const modules = [
+    "📘 Spoken English (Basic to Advanced)",
+    "🎯 Affiliate Marketing Introduction",
+    "🧲 Lead Generation Techniques",
+    "🎤 Communication Skills & Body Language",
+    "🎬 Basic Video Editing on Mobile",
+  ];
 
-      {/* All Courses Section */}
-      <section className="py-12 px-4 max-w-6xl mx-auto">
-        <h3 className="text-2xl font-bold mb-8">All Courses</h3>
-        <div className="grid md:grid-cols-2 gap-8">
-          {courses.map((course) => (
-            <div
-              key={course.id}
-              onClick={() => router.push(`/courses/${course.id}`)}
-              className="bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer hover:shadow-xl transition"
-            >
-              <div className="relative w-full aspect-video">
-                <Image
-                  src={course.image}
-                  alt={course.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-5">
-                <h4 className="text-xl font-semibold">{course.title}</h4>
-                <p className="text-sm text-gray-500 mb-2">Growsence</p>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>📘 {course.modules} Modules</li>
-                  <li>🗣️ {course.language}</li>
-                  <li>⏳ {course.access} Access</li>
-                </ul>
-                <p className="mt-3 font-bold text-indigo-700">{course.price}</p>
-              </div>
+  return (
+    <section className="text-gray-800 bg-white pt-20 px-4 md:px-16 pb-32">
+      {/* Hero */}
+      <div className="text-center max-w-3xl mx-auto">
+        <h1 className="text-4xl font-bold mb-4 text-indigo-800">🎓 Basic Package</h1>
+        <p className="text-lg text-gray-600 mb-4">
+          5-in-1 Foundational Skill Builder for Beginners. Learn, Grow & Start Earning.
+        </p>
+        <p className="text-xl font-semibold text-green-600 mb-6">₹1499 only</p>
+        <Link
+          href="/checkout/basic"
+          className="bg-indigo-600 text-white px-6 py-3 rounded-full font-semibold shadow-md hover:bg-indigo-700"
+        >
+          🚀 Buy Now
+        </Link>
+      </div>
+
+      {/* Overview */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center my-16">
+        <div>
+          <h2 className="text-3xl font-bold text-indigo-700">5</h2>
+          <p className="text-sm text-gray-500">Courses</p>
+        </div>
+        <div>
+          <h2 className="text-3xl font-bold text-indigo-700">30+</h2>
+          <p className="text-sm text-gray-500">Hours Content</p>
+        </div>
+        <div>
+          <h2 className="text-3xl font-bold text-indigo-700">1</h2>
+          <p className="text-sm text-gray-500">Certificate</p>
+        </div>
+        <div>
+          <h2 className="text-3xl font-bold text-indigo-700">7+</h2>
+          <p className="text-sm text-gray-500">Tools & Scripts</p>
+        </div>
+      </div>
+
+      {/* Key Highlights */}
+      <div className="mb-16">
+        <h2 className="text-2xl font-semibold mb-6 text-indigo-800">🔥 Key Highlights</h2>
+        <ul className="grid gap-4 md:grid-cols-2 list-disc pl-5 text-gray-700">
+          <li>Lifetime Access to All Modules</li>
+          <li>Mobile-Friendly, Learn Anytime</li>
+          <li>Certificate (Digital + NFT format)</li>
+          <li>AI Doubt Assistant + Telegram Group</li>
+        </ul>
+      </div>
+
+      {/* What You'll Learn */}
+      <div className="mb-16">
+        <h2 className="text-2xl font-semibold mb-6 text-indigo-800">💡 What You’ll Learn</h2>
+        <ul className="grid gap-3 md:grid-cols-2 list-disc pl-5 text-gray-700">
+          <li>Spoken English and Confidence Building</li>
+          <li>Basics of Affiliate Marketing</li>
+          <li>Lead Generation for Online Selling</li>
+          <li>Communication & Personality Skills</li>
+          <li>Video Editing with Free Mobile Tools</li>
+        </ul>
+      </div>
+
+      {/* Modules */}
+      <div className="mb-16">
+        <h2 className="text-2xl font-semibold mb-6 text-indigo-800">📦 Modules Included</h2>
+        <div className="space-y-4">
+          {modules.map((mod, idx) => (
+            <div key={idx} className="bg-gray-100 p-4 rounded-md border border-gray-200">
+              {mod}
             </div>
           ))}
         </div>
-      </section>
+      </div>
+
+      {/* FAQ */}
+      <div className="mb-16">
+        <h2 className="text-2xl font-semibold mb-6 text-indigo-800">❓ Frequently Asked Questions</h2>
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <div key={index} className="border border-gray-200 rounded-md">
+              <button
+                onClick={() => toggleFAQ(index)}
+                className="w-full text-left px-4 py-3 bg-gray-50 hover:bg-gray-100 font-medium"
+              >
+                {faq.question}
+              </button>
+              {faqOpen === index && (
+                <div className="px-4 py-3 text-gray-700 bg-white">{faq.answer}</div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Rate This Course */}
+      <div className="mb-24">
+        <h2 className="text-2xl font-semibold mb-4 text-indigo-800">⭐ Rate This Course</h2>
+        <div className="flex items-center mb-4">
+          {[1, 2, 3, 4, 5].map((star) => (
+            <FaStar
+              key={star}
+              className={`text-2xl cursor-pointer ${
+                (hoverRating || rating) >= star ? "text-yellow-400" : "text-gray-300"
+              }`}
+              onMouseEnter={() => setHoverRating(star)}
+              onMouseLeave={() => setHoverRating(0)}
+              onClick={() => setRating(star)}
+            />
+          ))}
+        </div>
+        <textarea
+          value={review}
+          onChange={(e) => setReview(e.target.value)}
+          placeholder="Write your review..."
+          className="w-full border border-gray-300 rounded-md p-3 mb-4 focus:outline-none focus:ring focus:ring-indigo-300"
+          rows={3}
+        />
+        <button className="bg-green-600 text-white px-5 py-2 rounded-md hover:bg-green-700">
+          Submit Review
+        </button>
+      </div>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-gray-300 text-center py-6 mt-12">
-        <p>© {new Date().getFullYear()} Growsence India. All rights reserved.</p>
+      <footer className="text-center text-gray-400 text-sm border-t pt-8">
+        &copy; {new Date().getFullYear()} Growsence. All rights reserved.
       </footer>
-    </div>
+    </section>
   );
 }
