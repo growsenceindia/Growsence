@@ -1,142 +1,183 @@
-'use client';
+import React, { useState, useEffect } from "react";
 
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { FaCheckCircle, FaStar } from 'react-icons/fa';
-import Image from 'next/image';
-import Link from 'next/link';
+const bonusHistory = [
+  {
+    year: 2021,
+    name: "Diwali Dhamaka",
+    bonus: "Free Personal Branding Course + ₹500 Cashback",
+    img: "/bonus/diwali.png",
+    claimed: 320,
+  },
+  {
+    year: 2022,
+    name: "Holi Splash",
+    bonus: "Lead Generation Toolkit + 1:1 Mentorship Call",
+    img: "/bonus/holi.png",
+    claimed: 410,
+  },
+  {
+    year: 2023,
+    name: "New Year Growth Pack",
+    bonus: "Exclusive E-Book + Pro Tools Access",
+    img: "/bonus/newyear.png",
+    claimed: 525,
+  },
+];
 
-export default function FestivalPage() {
-  const [attendees, setAttendees] = useState(0);
-  const [speakers, setSpeakers] = useState(0);
-  const [states, setStates] = useState(0);
-  const [xpEarned, setXpEarned] = useState(0);
+const winners = [
+  {
+    name: "Rahul Sharma",
+    year: 2022,
+    img: "/winners/2022_rahul.jpg",
+    quote: "Holi bonus se mujhe mentorship call mili, growth boost hua!",
+  },
+  {
+    name: "Sneha Patel",
+    year: 2023,
+    img: "/winners/2023_sneha.jpg",
+    quote: "E-book aur tools ne meri earning double kar di!",
+  },
+];
 
+const testimonials = [
+  {
+    name: "Amit Verma",
+    img: "/users/amit.jpg",
+    text: "Festival bonus ka wait har saal rehta hai. Growsence ne mujhe har बार surprise किया!",
+  },
+  {
+    name: "Priya Singh",
+    img: "/users/priya.jpg",
+    text: "Real rewards, instant claim, aur support best hai.",
+  },
+];
+
+export default function FestivalBonusPage() {
+  // Countdown logic
+  const [timeLeft, setTimeLeft] = useState({});
   useEffect(() => {
-    const animateCount = (setFn, target) => {
-      let count = 0;
-      const step = target / 50;
-      const interval = setInterval(() => {
-        count += step;
-        if (count >= target) {
-          setFn(target);
-          clearInterval(interval);
-        } else {
-          setFn(Math.floor(count));
-        }
-      }, 40);
-    };
-
-    animateCount(setAttendees, 1500);
-    animateCount(setSpeakers, 15);
-    animateCount(setStates, 20);
-    animateCount(setXpEarned, 50000);
+    const end = new Date("2025-07-05T23:59:59").getTime();
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const diff = end - now;
+      setTimeLeft({
+        days: Math.max(0, Math.floor(diff / (1000 * 60 * 60 * 24))),
+        hours: Math.max(0, Math.floor((diff / (1000 * 60 * 60)) % 24)),
+        mins: Math.max(0, Math.floor((diff / (1000 * 60)) % 60)),
+        secs: Math.max(0, Math.floor((diff / 1000) % 60)),
+      });
+    }, 1000);
+    return () => clearInterval(timer);
   }, []);
 
+  // Confetti animation on claim (simple emoji burst)
+  const [showConfetti, setShowConfetti] = useState(false);
+  const handleClaim = () => {
+    setShowConfetti(true);
+    setTimeout(() => setShowConfetti(false), 2000);
+    alert("Congratulations! Your festival bonus has been claimed.");
+  };
+
   return (
-    <div className="bg-white text-gray-800">
-      {/* Hero */}
-      <div className="bg-gradient-to-br from-yellow-100 via-pink-100 to-blue-100 py-16 px-6 text-center rounded-b-3xl shadow-md">
-        <h1 className="text-5xl font-bold text-gray-900 mb-4">Growsence Festival 2025 🎉</h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
-          India’s biggest student growth event — knowledge, community & memories packed into one festival.
+    <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-pink-100 py-8 px-2 md:px-0">
+      {/* Hero Section */}
+      <div className="max-w-3xl mx-auto text-center mb-8">
+        <h1 className="text-4xl md:text-5xl font-bold text-pink-700 mb-2">
+          🎉 Festival Bonus Carnival
+        </h1>
+        <p className="text-lg text-gray-700 mb-4">
+          हर साल, Growsence परिवार को exclusive बोनस और रिवॉर्ड्स मिलते हैं!  
+          <span className="block font-semibold text-pink-600">Claim your 2025 Festival Bonus now!</span>
         </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Link href="https://youtube.com/@growsenceindia" className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-full font-semibold transition-all">
-            📺 Watch Aftermovie
-          </Link>
-          <Link href="/gallery" className="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-2 rounded-full font-semibold transition-all">
-            📸 View Gallery
-          </Link>
+        <div className="flex justify-center gap-2 text-xl font-mono mb-2">
+          <span>{timeLeft.days}d</span>:
+          <span>{timeLeft.hours}h</span>:
+          <span>{timeLeft.mins}m</span>:
+          <span>{timeLeft.secs}s</span>
         </div>
+        <button
+          className="bg-pink-600 hover:bg-pink-700 text-white py-2 px-6 rounded-lg font-semibold shadow-lg transition-all"
+          onClick={handleClaim}
+        >
+          Claim Bonus
+        </button>
+        {showConfetti && (
+          <div className="fixed inset-0 pointer-events-none flex justify-center items-center z-50 text-5xl animate-bounce">
+            🎊🎉✨🥳🎁
+          </div>
+        )}
       </div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center py-12 px-6 max-w-5xl mx-auto">
-        <div>
-          <h2 className="text-4xl font-bold text-purple-700">{attendees}+</h2>
-          <p className="text-sm">Attendees</p>
-        </div>
-        <div>
-          <h2 className="text-4xl font-bold text-blue-600">{speakers}</h2>
-          <p className="text-sm">Inspiring Speakers</p>
-        </div>
-        <div>
-          <h2 className="text-4xl font-bold text-green-600">{states}</h2>
-          <p className="text-sm">States Participated</p>
-        </div>
-        <div>
-          <h2 className="text-4xl font-bold text-yellow-600">{xpEarned} XP</h2>
-          <p className="text-sm">XP Earned</p>
-        </div>
-      </div>
-
-      {/* Top Achievers */}
-      <div className="bg-gray-50 py-12 px-6 text-center">
-        <h2 className="text-3xl font-bold mb-6">🌟 Top Achievers</h2>
-        <div className="flex flex-wrap justify-center gap-6">
-          {[1, 2, 3].map(i => (
-            <motion.div key={i} whileHover={{ scale: 1.05 }} className="bg-white p-6 rounded-2xl shadow-md w-72">
-              <Image src={`/festival/achiever${i}.jpg`} alt={`Achiever ${i}`} width={300} height={300} className="rounded-xl mb-4" />
-              <h3 className="font-semibold text-lg">Achiever #{i}</h3>
-              <p className="text-sm text-gray-500">Special Recognition Badge</p>
-            </motion.div>
+      {/* Bonus Timeline (Legacy Feel) */}
+      <div className="max-w-4xl mx-auto mb-10">
+        <h2 className="text-2xl font-bold text-pink-700 mb-4 text-center">Our Festival Bonus Legacy</h2>
+        <div className="flex flex-col md:flex-row gap-6 justify-center">
+          {bonusHistory.map((bonus) => (
+            <div
+              key={bonus.year}
+              className="bg-white/80 rounded-xl shadow-md p-4 flex-1 flex flex-col items-center border border-pink-100"
+            >
+              <img src={bonus.img} alt={bonus.name} className="w-20 h-20 object-contain mb-2" />
+              <div className="text-lg font-semibold text-pink-600">{bonus.name} ({bonus.year})</div>
+              <div className="text-gray-700 mb-2 text-center">{bonus.bonus}</div>
+              <div className="text-xs text-gray-500">{bonus.claimed}+ claimed</div>
+            </div>
           ))}
         </div>
       </div>
 
-      {/* Speaker Highlights */}
-      <div className="bg-gradient-to-r from-white to-blue-50 py-12 px-6 text-center">
-        <h2 className="text-3xl font-bold mb-6">🎤 Guest Speakers</h2>
-        <div className="flex flex-wrap justify-center gap-6">
-          {["Dr. Meena", "Mr. Raghav", "Ms. Tiwari"].map((name, idx) => (
-            <motion.div key={idx} whileHover={{ scale: 1.05 }} className="bg-white p-6 rounded-2xl shadow-md w-72">
-              <Image src={`/festival/speaker${idx + 1}.jpg`} alt={name} width={300} height={300} className="rounded-xl mb-4" />
-              <h3 className="font-semibold text-lg">{name}</h3>
-              <p className="text-sm text-gray-500">Motivational Speaker</p>
-            </motion.div>
+      {/* Winners Carousel */}
+      <div className="max-w-3xl mx-auto mb-10">
+        <h2 className="text-xl font-bold text-pink-700 mb-2 text-center">Past Winners</h2>
+        <div className="flex gap-4 overflow-x-auto pb-2">
+          {winners.map((w) => (
+            <div
+              key={w.name}
+              className="bg-pink-50 rounded-lg shadow p-4 min-w-[200px] flex flex-col items-center"
+            >
+              <img src={w.img} alt={w.name} className="w-16 h-16 rounded-full mb-2" />
+              <div className="font-semibold">{w.name}</div>
+              <div className="text-xs text-gray-500 mb-1">{w.year} Winner</div>
+              <div className="text-sm text-pink-700 italic text-center">“{w.quote}”</div>
+            </div>
           ))}
         </div>
       </div>
 
       {/* Testimonials */}
-      <div className="bg-white py-12 px-6 text-center">
-        <h2 className="text-3xl font-bold mb-6">🧡 Student Testimonials</h2>
-        <div className="flex flex-wrap justify-center gap-6">
-          {["Riya", "Aman", "Sneha"].map((name, i) => (
-            <motion.div key={i} whileHover={{ scale: 1.05 }} className="bg-orange-50 p-6 rounded-2xl shadow-md w-72">
-              <p className="text-sm text-gray-700 mb-4 italic">“It changed my confidence level completely!”</p>
-              <div className="flex justify-center gap-1 mb-2">
-                {[...Array(5)].map((_, j) => <FaStar key={j} className="text-yellow-500" />)}
+      <div className="max-w-2xl mx-auto mb-10">
+        <h2 className="text-xl font-bold text-pink-700 mb-2 text-center">Student Testimonials</h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          {testimonials.map((t) => (
+            <div key={t.name} className="bg-white rounded-lg shadow p-4 flex gap-3 items-center">
+              <img src={t.img} alt={t.name} className="w-10 h-10 rounded-full" />
+              <div>
+                <div className="font-semibold text-pink-600">{t.name}</div>
+                <div className="text-sm text-gray-700">{t.text}</div>
               </div>
-              <h4 className="font-semibold">{name}</h4>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
 
-      {/* Aftermovie Video */}
-      <div className="py-12 px-6 text-center">
-        <h2 className="text-3xl font-bold mb-4">📽️ Official Aftermovie</h2>
-        <div className="aspect-video max-w-4xl mx-auto">
-          <iframe
-            className="rounded-xl w-full h-full"
-            src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-            title="Growsence Festival Aftermovie"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+      {/* FAQ + Social + Legal */}
+      <div className="max-w-3xl mx-auto mb-10">
+        <h2 className="text-xl font-bold text-pink-700 mb-2">FAQ</h2>
+        <div className="bg-white rounded-lg shadow p-4 mb-4">
+          <div className="font-semibold mb-1">Q: Bonus kaise claim karein?</div>
+          <div className="text-gray-700 mb-2">Claim Bonus बटन दबाएं, ऑफर आपके अकाउंट में जुड़ जाएगा।</div>
+          <div className="font-semibold mb-1">Q: कौन-कौन claim कर सकता है?</div>
+          <div className="text-gray-700 mb-2">सभी active students, सिर्फ एक बार per festival।</div>
         </div>
-      </div>
-
-      {/* Footer Call to Action */}
-      <div className="bg-indigo-600 py-12 text-center text-white rounded-t-3xl mt-10">
-        <h2 className="text-2xl font-semibold mb-3">🔥 Ready for the next Growsence Festival?</h2>
-        <p className="mb-6">We’re leveling up! Join the waitlist & be the first to know when registrations open.</p>
-        <Link href="/coming-soon" className="bg-white text-indigo-700 px-6 py-2 rounded-full font-semibold hover:bg-gray-200">
-          🚀 Join Waitlist
-        </Link>
+        <div className="flex gap-4 justify-center mt-4">
+          <a href="https://wa.me/919835742586" target="_blank" rel="noopener" className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg">WhatsApp Support</a>
+          <a href="https://www.instagram.com/growsenceindia" target="_blank" rel="noopener" className="bg-pink-400 hover:bg-pink-500 text-white px-4 py-2 rounded-lg">Instagram</a>
+        </div>
+        <div className="text-xs text-gray-500 text-center mt-4">
+          *Terms & Conditions apply. Bonus non-transferable. GST/MSME registered since 2021.
+        </div>
       </div>
     </div>
   );
+}
 }
