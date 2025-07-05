@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { auth } from "@/lib/firebase";
+import { auth } from "../../lib/firebase";
 import Image from "next/image";
 import {
   GoogleAuthProvider,
@@ -10,8 +10,6 @@ import {
   isSignInWithEmailLink,
   signInWithEmailLink,
 } from "firebase/auth";
-
-import { auth } from "../firebase"; // ✅ make sure this path is correct
 
 export default function HeroSection() {
   const router = useRouter();
