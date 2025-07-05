@@ -1,17 +1,12 @@
 'use client';
 import { FaWhatsapp } from 'react-icons/fa';
 import Navbar from "./components/Navbar";
-import HeroSection from './components/HeroSection';
-import AboutSection from "./components/AboutSection";
 import FooterSection from './components/FooterSection';
-// Remaining components abhi bhi comment mein hain
 
 export default function Home() {
   return (
     <main className="bg-white text-gray-800">
       <Navbar />
-      <HeroSection />
-      <AboutSection />
       <FooterSection />
 
       {/* WhatsApp Floating Button */}
