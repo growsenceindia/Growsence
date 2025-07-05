@@ -1,35 +1,18 @@
 'use client';
 import { FaWhatsapp } from 'react-icons/fa';
-// import HeroSection from './components/HeroSection';
-// import HowItWorksSection from './components/HowItWorksSection';
-// import FooterSection from './components/FooterSection';
-// import AboutSection from "./components/AboutSection";
-// import WhyChooseUsSection from "./components/WhyChooseUsSection";
-// import TestimonialsSection from "./components/TestimonialsSection";
-// import StatsCounterSection from "./components/StatsCounterSection';
-// import ScrollProgressBar from "./components/ScrollProgressBar";
-// import FAQSection from "./components/FAQSection";
-// import CourseSlider from "./components/CourseSlider";
-// import LegalCertificatesSection from "./components/LegalCertificatesSection";
-// import CoursePricingSection from "./components/CoursePricingSection';
-// import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar";
+import HeroSection from './components/HeroSection';
+import AboutSection from "./components/AboutSection";
+import FooterSection from './components/FooterSection';
+// Remaining components abhi bhi comment mein hain
 
 export default function Home() {
   return (
     <main className="bg-white text-gray-800">
-      {/* <Navbar /> */}
-      {/* <ScrollProgressBar /> */}
-      {/* <CourseSlider /> */}
-      {/* <HeroSection /> */}
-      {/* <AboutSection /> */}
-      {/* <StatsCounterSection /> */}
-      {/* <CoursePricingSection /> */}
-      {/* <HowItWorksSection /> */}
-      {/* <WhyChooseUsSection /> */}
-      {/* <TestimonialsSection /> */}
-      {/* <LegalCertificatesSection /> */}
-      {/* <FAQSection /> */}
-      {/* <FooterSection /> */}
+      <Navbar />
+      <HeroSection />
+      <AboutSection />
+      <FooterSection />
 
       {/* WhatsApp Floating Button */}
       <a
