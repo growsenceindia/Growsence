@@ -85,8 +85,19 @@ return ( <> {/* Announcement Banner */} <div className="bg-blue-700 text-white t
   </header>
 </>
 
-); }
+); 
+}
+function NavItem({ href, label, icon, pathname }) {
+  const isActive = pathname === href;
 
-function NavItem({ href, label, icon, pathname }) { const isActive = pathname === href; return ( <Link href={href} className={flex items-center gap-1 hover:text-blue-600 transition ${ isActive ? "text-blue-600 font-semibold" : "" }} > {icon} {label} </Link> ); }
-
-function MobileNavItem({ href, label }) { return ( <Link href={href} className="block"> {label} </Link> ); }
+  return (
+    <Link
+      href={href}
+      className={`flex items-center gap-1 hover:text-blue-600 transition ${
+        isActive ? "text-blue-600 font-semibold" : ""
+      }`}
+    >
+      {icon} {label}
+    </Link>
+  );
+}
