@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { auth } from "../../lib/firebase";
 import {
   GoogleAuthProvider,
   signInWithPopup,
