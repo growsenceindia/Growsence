@@ -1,16 +1,35 @@
 'use client';
-import { FaWhatsapp } from 'react-icons/fa';
-import Navbar from "./components/Navbar";
+import HowItWorksSection from './components/HowItWorksSection';
 import FooterSection from './components/FooterSection';
-import HeroSection from './components/HeroSection';
+import AboutSection from "./components/AboutSection";
+import WhyChooseUsSection from "./components/WhyChooseUsSection";
+import TestimonialsSection from "./components/TestimonialsSection";
+import StatsCounterSection from "./components/StatsCounterSection";
+import ScrollProgressBar from "./components/ScrollProgressBar";
+import FAQSection from "./components/FAQSection";
+import CourseSlider from "./components/CourseSlider";
+import LegalCertificatesSection from "./components/LegalCertificatesSection";
+import CoursePricingSection from "./components/CoursePricingSection";
+import Navbar from "./components/Navbar";
+import { FaWhatsapp } from 'react-icons/fa';
 
 export default function Home() {
   return (
     <main className="bg-white text-gray-800">
       <Navbar />
-      <HeroSection />
+      <ScrollProgressBar />
+      <CourseSlider />
+      {/* <HeroSection />  ❌ Temporarily removed */}
+      <AboutSection />
+      <StatsCounterSection />
+      <CoursePricingSection />
+      <HowItWorksSection />
+      <WhyChooseUsSection />
+      <TestimonialsSection />
+      <LegalCertificatesSection />
+      <FAQSection />
       <FooterSection />
-
+      
       {/* WhatsApp Floating Button */}
       <a
         href="https://wa.me/919835742586"
@@ -22,4 +41,4 @@ export default function Home() {
       </a>
     </main>
   );
-}
+                          }
