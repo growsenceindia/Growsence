@@ -10,6 +10,8 @@ import {
   signInWithEmailLink,
 } from "firebase/auth";
 
+import { auth } from "../firebase"; // ✅ make sure this path is correct
+
 export default function HeroSection() {
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
@@ -98,7 +100,9 @@ export default function HeroSection() {
               &times;
             </button>
 
-            <h2 className="text-2xl font-bold mb-6 text-center">Welcome to Growsence</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center">
+              Welcome to Growsence
+            </h2>
 
             <button
               onClick={handleGoogleLogin}
@@ -136,16 +140,18 @@ export default function HeroSection() {
               </button>
             </form>
 
-            {message && <p className="text-green-600 text-sm mt-4">{message}</p>}
+            {message && (
+              <p className="text-green-600 text-sm mt-4">{message}</p>
+            )}
             {error && <p className="text-red-500 text-sm mt-4">{error}</p>}
 
             <div className="mt-6 text-center">
               <p className="text-sm">
-  Don&apos;t have an account?{" "}
-  <a href="/courses" className="text-blue-600 font-medium hover:underline">
-    Enroll Now
-  </a>
-</p>
+                Don&apos;t have an account?{" "}
+                <a href="/courses" className="text-blue-600 font-medium hover:underline">
+                  Enroll Now
+                </a>
+              </p>
               <p className="text-xs text-gray-400 mt-3">
                 By continuing, you agree to our{" "}
                 <a href="/terms" className="underline">
@@ -162,4 +168,4 @@ export default function HeroSection() {
       )}
     </section>
   );
-}
+                  }
