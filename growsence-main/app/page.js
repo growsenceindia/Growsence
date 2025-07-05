@@ -2,11 +2,13 @@
 import { FaWhatsapp } from 'react-icons/fa';
 import Navbar from "./components/Navbar";
 import FooterSection from './components/FooterSection';
+import HeroSection from './components/HeroSection';
 
 export default function Home() {
   return (
     <main className="bg-white text-gray-800">
       <Navbar />
+      <HeroSection />
       <FooterSection />
 
       {/* WhatsApp Floating Button */}
